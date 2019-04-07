@@ -1,3 +1,6 @@
 <project name ="ant project" default="jar">
-  
+
+    <target name="init">
+        <mkdir dir="build-ant">
+    </target>
 </project>
