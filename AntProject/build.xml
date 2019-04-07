@@ -8,4 +8,8 @@
         <mkdir dir="build-ant"/>
     </target>
 
+    <target name="compile" depends="init">
+        <mkdir dir="build-ant/classes" />
+        <javac srcdir="src" destdir="build-ant/classes" includeantruntime="false" />
+    </target>
 </project>
