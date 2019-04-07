@@ -14,8 +14,8 @@
     </target>
 
     <target name="jar" depends="compile">
-        <mkdir dir="build-ant/jar" />
-        <jar destfile="build-ant/jar/r2d2.jar" basedir="build-ant/classes">
+        <mkdir dir="lib" />
+        <jar destfile="lib/r2d2.jar" basedir="build-ant/classes">
           <manifest>
             <attribute name="Main-Class" value="at.fhj.iit.r2d2" />
           </manifest>
