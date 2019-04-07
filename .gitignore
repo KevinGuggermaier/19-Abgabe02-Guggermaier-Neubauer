@@ -9,3 +9,4 @@ target
 lib
 dist
 build-ant
+.ant-targets-build.xml
