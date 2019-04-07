@@ -12,4 +12,14 @@
         <mkdir dir="build-ant/classes" />
         <javac srcdir="src" destdir="build-ant/classes" includeantruntime="false" />
     </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="build-ant/jar" />
+        <jar destfile="build-ant/jar/r2d2.jar" basedir="build-ant/classes">
+          <manifest>
+            <attribute name="Main-Class" value="at.fhj.iit.r2d2" />
+          </manifest>
+        </jar>
+    </target>
+
 </project>
