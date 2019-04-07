@@ -27,7 +27,7 @@
         <copy todir="dist" file="lib/r2d2.jar"/>
     </target>
 
-    <target name="run">
+    <target name="run" depends="install">
       <java jar="dist/r2d2.jar" fork="true">
         <arg value="Luke Skywalker"/>
       </java>
