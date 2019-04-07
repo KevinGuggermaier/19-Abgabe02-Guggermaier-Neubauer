@@ -1,6 +1,11 @@
 <project name ="ant project" default="jar">
 
-    <target name="init">
-        <mkdir dir="build-ant">
+    <target name="clean">
+      <delete dir="build-ant"/>
     </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="build-ant"/>
+    </target>
+
 </project>
