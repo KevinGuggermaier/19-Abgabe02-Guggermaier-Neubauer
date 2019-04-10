@@ -1,34 +1,43 @@
-<project name ="ant project" default="jar">
+<?xml version="1.0" encoding="UTF-8"?>
+<project name ="${ant.projectName}" default="jar">
 
-    <target name="clean">
-      <delete dir="build-ant"/>
+    <property file="build.properties"/>
+
+    <target name="test">
+        <echo> Message from file ${test} </echo>
+        <mkdir dir="${ant.dir}"/>
     </target>
 
-    <target name="init" depends="clean">
-        <mkdir dir="build-ant"/>
+    <target name="clean">
+      <delete dir="${ant.out}"/>
+      <delete dir="${ant.build}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${ant.build}"/>
     </target>
 
     <target name="compile" depends="init">
-        <mkdir dir="build-ant/classes" />
-        <javac srcdir="src" destdir="build-ant/classes" includeantruntime="false" />
+        <mkdir dir="${ant.build}/classes" />
+        <javac srcdir="src" destdir="${ant.build}/classes" includeantruntime="false" />
     </target>
 
     <target name="jar" depends="compile">
-        <mkdir dir="lib" />
-        <jar destfile="lib/r2d2.jar" basedir="build-ant/classes">
+        <mkdir dir="${ant.lib}"/>
+        <jar destfile="${ant.lib}/${ant.filename}.jar" basedir="${ant.build}/classes">
           <manifest>
-            <attribute name="Main-Class" value="at.fhj.iit.Main" />
+            <attribute name="Main-Class" value="${ant.main}"/>
           </manifest>
         </jar>
     </target>
 
     <target name="install" depends="jar">
-        <mkdir dir="dist"/>
-        <copy todir="dist" file="lib/r2d2.jar"/>
+        <mkdir dir="${ant.out}"/>
+        <copy todir="${ant.out}" file="${ant.lib}/${ant.filename}.jar"/>
     </target>
 
     <target name="run" depends="install">
-      <java jar="dist/r2d2.jar" fork="true">
+      <java jar="${ant.out}/${ant.filename}.jar" fork="true">
         <arg value="Luke Skywalker"/>
       </java>
     </target>
